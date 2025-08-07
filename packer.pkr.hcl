@@ -19,7 +19,23 @@ build {
     ]
   }
 
-  # Do stuff here
+  # Install logrotate
+  provisioner "shell" {
+    inline = [
+      "apk add --no-cache mariadb-client",
+    ]
+  }
+
+  # add our run script
+  provisioner "file" {
+    source      = "run.sh"
+    destination = "/run.sh"
+  }
+  provisioner "shell" {
+    inline = [
+      "chmod 0755 /run.sh",
+    ]
+  }
 
   # Remove APK cache for space
   provisioner "shell" {
@@ -29,7 +45,7 @@ build {
   }
 
   post-processor "docker-tag" {
-    repository = "akester/containername"
+    repository = "akester/mysqldump"
     tags = [
       "${var.version}"
     ]
