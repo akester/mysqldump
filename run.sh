@@ -1,6 +1,7 @@
 #!/bin/bash
 
 set -e
+set -x
 
 RETAIN="${BACKUP_DAYS:-14}"
 DATE=$( date +"%Y-%m-%dT%H:%M" )
