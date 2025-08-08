@@ -22,10 +22,9 @@ build {
     ]
   }
 
-  # Install logrotate
   provisioner "shell" {
     inline = [
-      "apk add --no-cache mariadb-client",
+      "apk add --no-cache mariadb-client bash",
     ]
   }
 
