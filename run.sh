@@ -12,7 +12,7 @@ fi
 
 mkdir -p $BACKUP_DIR
 
-DBS=$( mysql -h $MYSQL_HOST -u$MYSQL_USER -p"$MYSQL_PASS" -N -e "SHOW DATABASES;" )
+DBS=$( mariadb -h $MYSQL_HOST -u$MYSQL_USER -p"$MYSQL_PASS" -N -e "SHOW DATABASES;" )
 
 for DB in $DBS; do
     if [ "$DB" = "mysql" ]; then
