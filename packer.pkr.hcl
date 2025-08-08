@@ -6,6 +6,9 @@ variable "version" {
 source "docker" "alpine" {
   commit = true
   image  = "alpine:latest"
+  changes = [
+    "CMD [\"/run.sh\"]"
+  ]
 }
 
 build {
