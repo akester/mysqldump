@@ -34,7 +34,7 @@ for DB in $DBS; do
     echo "Creating backup of $DB..."
     FILENAME="$DB-$DATE.sql.gz"
 
-    mysqldump -u$MYSQL_USER -p"$MYSQL_PASS" --single-transaction $DB | gzip > "$BACKUP_DIR"/"$FILENAME"
+    mariadbdump -u$MYSQL_USER -p"$MYSQL_PASS" --single-transaction $DB | gzip > "$BACKUP_DIR"/"$FILENAME"
 done
 
 echo "Cleaning out old backups..."
