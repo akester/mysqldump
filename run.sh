@@ -31,8 +31,8 @@ for DB in $DBS; do
         continue
     fi
 
-    echo "Creating backup of $DB..."
     FILENAME="$DB-$DATE.sql.gz"
+    echo "Creating backup $FILENAME..."
 
     mariadb-dump -h $MYSQL_HOST -u$MYSQL_USER -p"$MYSQL_PASS" --single-transaction $DB | gzip > "$BACKUP_DIR"/"$FILENAME"
 done
